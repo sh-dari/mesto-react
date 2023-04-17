@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from './Header.js'
 import Main from './Main.js'
 import Footer from './Footer.js'
@@ -37,28 +37,28 @@ function App() {
     <div className="page">
       <Header />
       <Main isEditAvatarPopupOpen={handleEditAvatarClick} isEditProfilePopupOpen={handleEditProfileClick} isAddPlacePopupOpen={handleAddPlaceClick} onCardClick={handleCardClick}/>
-      <PopupWithForm name="profile" title="Редактировать профиль" children={(
+      <PopupWithForm name="profile" title="Редактировать профиль" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
         <fieldset className="popup__input-container">
           <input className="popup__item popup__item_el_name" type="text" id="name-input" name="name" placeholder="Имя" required minLength="2" maxLength="40"/>
           <span className="popup__item-error name-input-error"></span>
           <input className="popup__item popup__item_el_about" type="text" id="about-input" name="about" placeholder="О себе" required minLength="2" maxLength="200"/>
           <span className="popup__item-error about-input-error"></span>
         </fieldset>
-      )} button="Сохранить" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
-      <PopupWithForm name="card" title="Новое место" children={(
+      </PopupWithForm>
+      <PopupWithForm name="card" title="Новое место" button="Создать" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} >
         <fieldset className="popup__input-container">
           <input className="popup__item popup__item_el_place" type="text" id="place-input" name="name" placeholder="Название" required minLength="2" maxLength="30"/>
           <span className="popup__item-error place-input-error"></span>
           <input className="popup__item popup__item_el_link" type="url" id="link-input" name="link" placeholder="Ссылка на картинку" required/>
           <span className="popup__item-error link-input-error"></span>
         </fieldset>
-      )} button="Создать" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
-      <PopupWithForm name="avatar" title="Обновить аватар" children={(
+      </PopupWithForm>
+      <PopupWithForm name="avatar" title="Обновить аватар" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} >
         <fieldset className="popup__input-container popup__input-container_for_avatar">
           <input className="popup__item popup__item_el_link" type="url" id="avatar-input" name="link" placeholder="Ссылка на картинку" required/>
           <span className="popup__item-error avatar-input-error"></span>
         </fieldset>
-      )} button="Сохранить" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
+      </PopupWithForm>
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       <PopupWithForm name="delete" title="Вы уверены?" button="Да" onClose={closeAllPopups} />
       <Footer />

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import api from "../utils/Api.js";
 import Card from './Card.js';
 
-function Main(props) {
+function Main({ isEditAvatarPopupOpen, isEditProfilePopupOpen, isAddPlacePopupOpen, onCardClick }) {
 
   const [userName, setUserName] = useState("");
   const [userDescription, setUserDescription ] = useState("");
@@ -27,7 +27,7 @@ function Main(props) {
   return(
     <main className="content">
       <section className="profile">
-        <div className="profile__image" onClick={props.isEditAvatarPopupOpen}>
+        <div className="profile__image" onClick={isEditAvatarPopupOpen}>
           <img className="profile__avatar" alt="Аватар пользователя" src={userAvatar}/>
         </div>
         <div className="profile__container">
@@ -35,14 +35,14 @@ function Main(props) {
             <h1 className="profile__name">{userName}</h1>
             <p className="profile__job">{userDescription}</p>
           </div>
-          <button type="button" className="profile__edit-button" onClick={props.isEditProfilePopupOpen}></button>
+          <button type="button" className="profile__edit-button" onClick={isEditProfilePopupOpen}></button>
         </div>
-        <button type="button" className="profile__add-button" onClick={props.isAddPlacePopupOpen}></button>
+        <button type="button" className="profile__add-button" onClick={isAddPlacePopupOpen}></button>
       </section>
       <section className="elements">
         <ul className="elements__list">
           {cards.map((card) => (
-            <Card card={card} onCardClick={props.onCardClick} key={card._id} />
+            <Card card={card} onCardClick={onCardClick} key={card._id} />
           ))}
         </ul>
       </section>
