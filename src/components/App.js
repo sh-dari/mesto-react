@@ -7,7 +7,7 @@ import ImagePopup from './ImagePopup';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
-import api from "../utils/Api";
+import api from "../utils/api";
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
@@ -129,13 +129,45 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header />
-        <Main isEditAvatarPopupOpen={handleEditAvatarClick} isEditProfilePopupOpen={handleEditProfileClick} isAddPlacePopupOpen={handleAddPlaceClick}
-        onCardClick={handleCardClick} onCardLike={handleCardLike} onCardDelete={handleCardDelete} cards={cards} />
-        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoading={loading} />
-        <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onCreateCard={handleCreateCard} isLoading={loading} />
-        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} isLoading={loading} />
-        <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-        <PopupWithForm name="delete" title="Вы уверены?" button="Да" isOpen={isDeletePopupOpen} onClose={closeAllPopups} onSubmit={handlePopupDeleteSubmit}/>
+        <Main
+          isEditAvatarPopupOpen={handleEditAvatarClick}
+          isEditProfilePopupOpen={handleEditProfileClick}
+          isAddPlacePopupOpen={handleAddPlaceClick}
+          onCardClick={handleCardClick}
+          onCardLike={handleCardLike}
+          onCardDelete={handleCardDelete}
+          cards={cards}
+        />
+        <EditProfilePopup
+          isOpen={isEditProfilePopupOpen}
+          onClose={closeAllPopups}
+          onUpdateUser={handleUpdateUser}
+          isLoading={loading}
+        />
+        <AddPlacePopup
+          isOpen={isAddPlacePopupOpen}
+          onClose={closeAllPopups}
+          onCreateCard={handleCreateCard}
+          isLoading={loading}
+        />
+        <EditAvatarPopup
+          isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}
+          onUpdateAvatar={handleUpdateAvatar}
+          isLoading={loading}
+        />
+        <ImagePopup
+          card={selectedCard}
+          onClose={closeAllPopups}
+        />
+        <PopupWithForm
+          name="delete"
+          title="Вы уверены?"
+          button="Да"
+          isOpen={isDeletePopupOpen}
+          onClose={closeAllPopups}
+          onSubmit={handlePopupDeleteSubmit}
+        />
         <Footer />
       </div>
     </CurrentUserContext.Provider>
