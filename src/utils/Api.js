@@ -80,6 +80,15 @@ class Api {
     .then(res => this.getFetchAnswer(res));
   }
 
+  changeLikeCardStatus(id, isLiked) {
+    return fetch(`${this.baseUrl}/cards/${id}/likes`,
+    {
+      method: isLiked ? 'DELETE' : 'PUT',
+      headers: this.headers
+    })
+    .then(res => this.getFetchAnswer(res));
+  }
+
   changeAvatar(link) {
     return fetch(`${this.baseUrl}/users/me/avatar`,
     {
