@@ -3,8 +3,8 @@ const Popup = ({ isOpen, onClose, name, children }) => {
   const isOpened = isOpen ? "popup_opened" : "";
   useEffect(() => {
     if (!isOpen) return;
-    const handleCloseEscPopup = (e) => {
-      if (e.key === 'Escape') {
+    const handleCloseEscPopup = (evt) => {
+      if (evt.key === 'Escape') {
         onClose();
       }
     }
