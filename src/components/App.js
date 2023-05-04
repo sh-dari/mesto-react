@@ -167,6 +167,7 @@ function App() {
           isOpen={isDeletePopupOpen}
           onClose={closeAllPopups}
           onSubmit={handlePopupDeleteSubmit}
+          isValid={true}
         />
         <Footer />
       </div>

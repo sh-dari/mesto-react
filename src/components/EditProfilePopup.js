@@ -27,7 +27,7 @@ function EditProfilePopup({ isOpen, isLoading, onClose, onUpdateUser }) {
   }
 
   return(
-    <PopupWithForm name="profile" title="Редактировать профиль" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit} isLoading={isLoading} >
+    <PopupWithForm name="profile" title="Редактировать профиль" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit} isLoading={isLoading} isValid={true} >
       <fieldset className="popup__input-container">
         <input className="popup__item popup__item_el_name" value={name || ''} onChange={handleChangeName} type="text" id="name-input" name="name" placeholder="Имя" required minLength="2" maxLength="40"/>
         <span className="popup__item-error name-input-error"></span>
